@@ -117,6 +117,35 @@ export const getUserImports = async (req, res, next) => {
   }
 };
 
+// Get one import record owned by the current user
+export const getImportById = async (req, res, next) => {
+  try {
+    const { importId } = req.params;
+
+    if (!importId.match(/^[0-9a-fA-F]{24}$/)) {
+      return sendError(res, "Invalid import ID format", 400);
+    }
+
+    const importRecord = await Import.findById(importId).lean();
+
+    if (!importRecord) {
+      return sendError(res, "Import record not found", 404);
+    }
+
+    if (importRecord.importerId !== req.user.uid) {
+      return sendError(
+        res,
+        "Unauthorized: You can only view your own imports",
+        403,
+      );
+    }
+
+    sendSuccess(res, "Import retrieved", importRecord);
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Get all imports with advanced filtering and pagination
 export const getAllImports = async (req, res, next) => {
   try {
