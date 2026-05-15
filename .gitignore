@@ -9,9 +9,8 @@ yarn-error.log*
 .env.local
 .env.*.local
 
-# Documentation
-*.md
-!README.md
+# Documentation - track all MD files for project docs
+# (excluding node_modules and other generated docs)
 
 
 
