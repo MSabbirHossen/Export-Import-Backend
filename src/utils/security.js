@@ -68,6 +68,7 @@ const getAllowedOrigins = () => {
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5000",
+    "https://import-export-hub-client.vercel.app",
     "https://import-export-hub-bf41a.web.app",
     "https://import-export-hub-bf41a.firebaseapp.com",
   ];
