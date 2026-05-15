@@ -24,9 +24,6 @@ const apiInfo = {
   message: "Import Export Hub API v1.0",
   endpoints: {
     health: "/api/health",
-    products: "/api/products",
-    imports: "/api/imports",
-    users: "/api/users",
   },
 };
 
